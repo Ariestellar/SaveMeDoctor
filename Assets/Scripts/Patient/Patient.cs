@@ -7,18 +7,23 @@ public class Patient : MonoBehaviour
 {
     private PatientMovement _patientMovement;
     private PatientAnimations _patientAnimations;   
+    private UI _ui;   
+    private PatientData _patientData;   
 
     public void Init(UI ui, PatientData patientData)
     {
+        _ui = ui;
+        _patientData = patientData;
         _patientMovement = GetComponent<PatientMovement>();
-        _patientMovement.Init(ui);        
-        GameObject newAnimation = Instantiate(patientData.AnimationGO, this.transform);
+        _patientMovement.Init(_ui);        
+        GameObject newAnimation = Instantiate(_patientData.AnimationGO, this.transform);
         _patientAnimations = newAnimation.GetComponent<PatientAnimations>();
-        _patientAnimations.Init(patientData);
+        _patientAnimations.Init(_patientData);
     }
 
     public void GoToDoctorOffice()
     {
+        _ui.SetButtonSelectionBar(_patientData.RightButton, _patientData.LeftButton);
         _patientMovement.SetShow(true);
     }
 
@@ -29,7 +34,8 @@ public class Patient : MonoBehaviour
 
     public void GoAnimation(ActionsButton button) 
     {
-        _patientAnimations.StartAnimation(button);        
+        _patientAnimations.StartAnimation(button);
+        _ui.ShowVariantPanel(false);
     }
 
     public PatientAnimations GetPatientAnimations()

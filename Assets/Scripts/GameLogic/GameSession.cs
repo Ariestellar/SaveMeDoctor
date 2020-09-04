@@ -64,13 +64,18 @@ public class GameSession : MonoBehaviour
     }
 
     private void ChangePacient()
-    {        
+    {       
+        
         EndPatientReception(_patientNumber);
         _patientNumber += 1;
-        if (_patientNumber == _patientPool.Count)
+        //Пока убрать (без цикличности) Для цикличности вернуть связи к idle
+        /*if (_patientNumber == _patientPool.Count)
         {
             _patientNumber = 0;
-        }
-        StartPatientReception(_patientNumber);
+        }*/
+        if (_patientNumber < _patientPool.Count)
+        {
+            StartPatientReception(_patientNumber);
+        }       
     }
 }

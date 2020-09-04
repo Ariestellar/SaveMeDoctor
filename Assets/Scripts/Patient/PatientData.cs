@@ -8,6 +8,11 @@ public class PatientData : ScriptableObject
 {
     [SerializeField] private String _name;   
     [SerializeField] private GameObject _animation;    
+    [SerializeField] private Sprite _rightButton;    
+    [SerializeField] private Sprite _leftButton;    
+    [SerializeField] private Sprite _requestIcon;    
 
     public GameObject AnimationGO => _animation;
+    public Sprite RightButton =>  _rightButton;
+    public Sprite LeftButton => _leftButton;
 }

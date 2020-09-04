@@ -15,3 +15,6 @@ MonoBehaviour:
   _name: "\u041F\u0430\u0446\u0438\u0435\u043D\u0442 \u0441 \u0440\u044B\u0431\u043E\u0439"
   _animation: {fileID: 1449006676625094215, guid: 3183edde8eb621b41a82adac83fb333e,
     type: 3}
+  _rightButton: {fileID: 21300000, guid: 96e26e250fdc8804bb2fc18e63b19ac7, type: 3}
+  _leftButton: {fileID: 21300000, guid: 8b06cae6d0bd44743b560f9641152533, type: 3}
+  _requestIcon: {fileID: 21300000, guid: fb07a9b7ce3d0bc4a86574346ca120b6, type: 3}

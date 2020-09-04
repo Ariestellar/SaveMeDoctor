@@ -7,6 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class PatientAnimations : MonoBehaviour
 {
+    [SerializeField] private GameObject _cloud;
     public Action _finishReception;
     private PatientData _patientData;
     private Animator _animator;    
@@ -25,6 +26,7 @@ public class PatientAnimations : MonoBehaviour
 
     public void StartAnimation(ActionsButton button)
     {
+        _cloud.SetActive(false);        
         _animator.SetTrigger(Convert.ToString(button));        
     }
 

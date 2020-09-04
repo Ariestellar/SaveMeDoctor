@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UI : MonoBehaviour
 {
@@ -17,8 +18,14 @@ public class UI : MonoBehaviour
         return _selectionBar;
     }
 
-    public void ShowVariantPanel()
+    public void ShowVariantPanel(bool value)
+    {        
+        _selectionBar.gameObject.SetActive(value);
+    }
+
+    public void SetButtonSelectionBar(Sprite rightButton, Sprite leftButton)
     {
-        _selectionBar.gameObject.SetActive(true);
+        _selectionBar.GetRightButton().GetComponent<Image>().sprite = rightButton;
+        _selectionBar.GetLeftButton().GetComponent<Image>().sprite = leftButton;
     }
 }
