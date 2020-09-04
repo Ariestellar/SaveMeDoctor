@@ -9,21 +9,18 @@ public class PatientAnimations : MonoBehaviour
 {
     public Action _finishReception;
     private PatientData _patientData;
-    private Animator _animator;
-    private SpriteRenderer _spriteRenderer;
+    private Animator _animator;    
 
     //private Action FinishReception => _finishReception;
 
     private void Awake()
     {
-        _animator = GetComponent<Animator>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();        
     }
 
     public void Init(PatientData patientData)
     {
-        _patientData = patientData;
-        _spriteRenderer.sprite = _patientData.Appearance;                
+        _patientData = patientData;                       
     }
 
     public void StartAnimation(ActionsButton button)

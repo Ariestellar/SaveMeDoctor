@@ -28,10 +28,10 @@ public class GameSession : MonoBehaviour
         _patientPool = _patientCreator.CreatePool(_ui);
         // TODO : исправить баг, когда по новой пул запускаем то не работает, ошибка заключается в порядке подписи на событие
         // после исправления баг заключается в том что первый из пула выдвигается до последнего, тут ошибка возможно в нумерации и счете 
-        /*foreach (var patient in _patientPool)
+        foreach (var patient in _patientPool)
         {
             patient.GetPatientAnimations()._finishReception += ChangePacient;
-        }*/
+        }
     }
 
     //Висит на кнопке "TapToPlay"  - начало игры из стартового экрана
@@ -54,7 +54,7 @@ public class GameSession : MonoBehaviour
     private void StartPatientReception(int patientNumber)
     {
         _patientPool[patientNumber].GoToDoctorOffice();
-        _patientPool[patientNumber].GetPatientAnimations()._finishReception += ChangePacient;
+        //_patientPool[patientNumber].GetPatientAnimations()._finishReception += ChangePacient;
     }
     
     private void EndPatientReception(int patientNumber)
