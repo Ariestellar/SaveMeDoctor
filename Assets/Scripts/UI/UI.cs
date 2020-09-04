@@ -7,6 +7,12 @@ public class UI : MonoBehaviour
 {
     [SerializeField] private MainMenu _mainMenu;
     [SerializeField] private SelectionBar _selectionBar;    
+    [SerializeField] private Animator _travelator;
+
+    public void MovementTravelator()
+    {
+        _travelator.SetTrigger("Movement");
+    }
 
     public MainMenu GetMainMenu()
     {

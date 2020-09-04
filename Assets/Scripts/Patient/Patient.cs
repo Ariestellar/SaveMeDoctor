@@ -23,6 +23,7 @@ public class Patient : MonoBehaviour
 
     public void GoToDoctorOffice()
     {
+        _ui.MovementTravelator();
         _ui.SetButtonSelectionBar(_patientData.RightButton, _patientData.LeftButton);
         _patientMovement.SetShow(true);
     }
