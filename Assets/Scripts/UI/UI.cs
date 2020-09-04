@@ -8,6 +8,7 @@ public class UI : MonoBehaviour
     [SerializeField] private MainMenu _mainMenu;
     [SerializeField] private SelectionBar _selectionBar;    
     [SerializeField] private Animator _travelator;
+    [SerializeField] private ResultPanel _resultPanel;
 
     public void MovementTravelator()
     {
@@ -22,6 +23,11 @@ public class UI : MonoBehaviour
     public SelectionBar GetSelectionBar()
     {
         return _selectionBar;
+    }
+
+    public ResultPanel GetResultPanel()
+    {
+        return _resultPanel;
     }
 
     public void ShowVariantPanel(bool value)

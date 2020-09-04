@@ -11,6 +11,7 @@ public class PatientAnimations : MonoBehaviour
     public Action _finishReception;
     private PatientData _patientData;
     private Animator _animator;    
+    private UI _ui;    
 
     //private Action FinishReception => _finishReception;
 
@@ -19,8 +20,9 @@ public class PatientAnimations : MonoBehaviour
         _animator = GetComponent<Animator>();        
     }
 
-    public void Init(PatientData patientData)
+    public void Init(PatientData patientData, UI ui)
     {
+        _ui = ui;
         _patientData = patientData;                       
     }
 
@@ -34,5 +36,12 @@ public class PatientAnimations : MonoBehaviour
     public void FinishReception()
     {
         _finishReception?.Invoke();
+    }
+
+    //Вызывается в середине анимации "P1CatsTakeFish_Anim", "P1FryFish_Anim"
+    public void ShowResult()
+    {
+        Debug.Log("Показать результат");
+        _ui.GetResultPanel().PlayAnimation();
     }
 }

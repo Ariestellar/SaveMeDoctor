@@ -53,8 +53,7 @@ public class GameSession : MonoBehaviour
 
     private void StartPatientReception(int patientNumber)
     {
-        _patientPool[patientNumber].GoToDoctorOffice();
-        //_patientPool[patientNumber].GetPatientAnimations()._finishReception += ChangePacient;
+        _patientPool[patientNumber].GoToDoctorOffice();        
     }
     
     private void EndPatientReception(int patientNumber)

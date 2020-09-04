@@ -18,7 +18,7 @@ public class Patient : MonoBehaviour
         _patientMovement.Init(_ui);        
         GameObject newAnimation = Instantiate(_patientData.AnimationGO, this.transform);
         _patientAnimations = newAnimation.GetComponent<PatientAnimations>();
-        _patientAnimations.Init(_patientData);
+        _patientAnimations.Init(_patientData, ui);
     }
 
     public void GoToDoctorOffice()
@@ -35,6 +35,16 @@ public class Patient : MonoBehaviour
 
     public void GoAnimation(ActionsButton button) 
     {
+        //Задать текст результата
+        if (_patientData.RightChoice == button)
+        {
+            _ui.GetResultPanel().SetText(Status.Victory);
+        }
+        else
+        {
+            _ui.GetResultPanel().SetText(Status.Defeat);
+        }
+
         _patientAnimations.StartAnimation(button);
         _ui.ShowVariantPanel(false);
     }
@@ -42,5 +52,5 @@ public class Patient : MonoBehaviour
     public PatientAnimations GetPatientAnimations()
     {
         return _patientAnimations;
-    }
+    }    
 }
