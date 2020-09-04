@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b79291a59f90edc4db53cf0f94eb8c82, type: 3}
   m_Name: PatientData#2
   m_EditorClassIdentifier: 
-  _appearance: {fileID: 21300000, guid: dccfee5399c069f4f96d26de97c8ed2b, type: 3}
-  _animation: {fileID: 0}
-  _animationGO: {fileID: 2997890964745352045, guid: aa4683c02c2f8d849a72b5f14b680361,
+  _name: 
+  _animation: {fileID: 1449006676625094215, guid: 3183edde8eb621b41a82adac83fb333e,
     type: 3}
