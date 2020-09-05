@@ -604,7 +604,7 @@ MonoBehaviour:
     type: 3}
   _patientDatas:
   - {fileID: 11400000, guid: ce0c06242c45c7f4bb71b34e7e190382, type: 2}
-  - {fileID: 11400000, guid: ce0c06242c45c7f4bb71b34e7e190382, type: 2}
+  - {fileID: 11400000, guid: bd5fc7345773f97479c5f653c2550657, type: 2}
   - {fileID: 11400000, guid: ce0c06242c45c7f4bb71b34e7e190382, type: 2}
 --- !u!1 &474231397
 GameObject:
