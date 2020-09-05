@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: "\u041C\u0435\u0442\u0435\u043E\u0440\u0438\u0437\u043C"
   _animation: {fileID: 2261353249816384598, guid: 4ff056db0dbc8e543bff6ae096c5c775,
     type: 3}
-  _rightButton: {fileID: 21300000, guid: 96e26e250fdc8804bb2fc18e63b19ac7, type: 3}
-  _leftButton: {fileID: 21300000, guid: 8b06cae6d0bd44743b560f9641152533, type: 3}
+  _rightButton: {fileID: 21300000, guid: dba9438ff4784c74c93cec1b2725b85c, type: 3}
+  _leftButton: {fileID: 21300000, guid: 9fd0b3a844597184d9f59a6114c33e59, type: 3}
   _requestIcon: {fileID: 21300000, guid: fb07a9b7ce3d0bc4a86574346ca120b6, type: 3}
-  _rightChoice: 0
+  _rightChoice: 1
