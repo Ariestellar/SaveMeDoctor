@@ -6,9 +6,13 @@ using UnityEngine.UI;
 public class ResultPanel : MonoBehaviour
 {    
     [SerializeField] private Text _text;
+    [SerializeField] private Image _imageText;
     [SerializeField] private UI _ui;
     [SerializeField] private Sprite _replay;
     [SerializeField] private Sprite _further;
+
+    [SerializeField] private Sprite _lose;
+    [SerializeField] private Sprite _win;
 
     private bool _isResultPanel;
     public bool IsResultPanel =>  _isResultPanel;
@@ -19,6 +23,7 @@ public class ResultPanel : MonoBehaviour
         {
             _text.color = Color.green;
             _text.text = "Good Job";
+            //_imageText.sprite = _win;
             _ui.SetButtonSelectionBar(_further, _replay);
 
         }
@@ -26,6 +31,7 @@ public class ResultPanel : MonoBehaviour
         {
             _text.color = Color.red;
             _text.text = "Defeat";
+            //_imageText.sprite = _lose;
             _ui.SetButtonSelectionBar(_replay);
         }
     }
