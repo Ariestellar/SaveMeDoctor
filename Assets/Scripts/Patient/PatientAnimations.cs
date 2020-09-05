@@ -8,12 +8,10 @@ using UnityEngine;
 public class PatientAnimations : MonoBehaviour
 {
     [SerializeField] private GameObject _cloud;
-    public Action _finishReception;
+    //public Action _finishReception;
     private PatientData _patientData;
     private Animator _animator;    
     private UI _ui;    
-
-    //private Action FinishReception => _finishReception;
 
     private void Awake()
     {
@@ -33,15 +31,19 @@ public class PatientAnimations : MonoBehaviour
     }
 
     //Вызывается в конце анимации "ActionLeft/ActionRight"
-    public void FinishReception()
+    /*public void FinishReception()
     {
         _finishReception?.Invoke();
-    }
+    }*/
 
     //Вызывается в середине анимации "P1CatsTakeFish_Anim", "P1FryFish_Anim"
     public void ShowResult()
+    {        
+        _ui.GetResultPanel().ShowResult();
+    }
+
+    public void Revert()
     {
-        Debug.Log("Показать результат");
-        _ui.GetResultPanel().PlayAnimation();
+        _animator.Rebind();
     }
 }

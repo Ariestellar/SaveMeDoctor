@@ -10,6 +10,8 @@ public class UI : MonoBehaviour
     [SerializeField] private Animator _travelator;
     [SerializeField] private ResultPanel _resultPanel;
 
+    private CountButtonResult _countButton;
+
     public void MovementTravelator()
     {
         _travelator.SetTrigger("Movement");
@@ -31,13 +33,34 @@ public class UI : MonoBehaviour
     }
 
     public void ShowVariantPanel(bool value)
-    {        
-        _selectionBar.gameObject.SetActive(value);
+    {
+        if (value == true)
+        {
+            if (_countButton == CountButtonResult.Two)
+            {
+                _selectionBar.ShowTwoButton();
+            }
+            else if (_countButton == CountButtonResult.One)
+            {                
+                _selectionBar.ShowOneButton();
+            }
+        }
+        else
+        {
+            _selectionBar.HideSelectionBar();
+        }               
     }
 
     public void SetButtonSelectionBar(Sprite rightButton, Sprite leftButton)
     {
+        _countButton = CountButtonResult.Two;
         _selectionBar.GetRightButton().GetComponent<Image>().sprite = rightButton;
         _selectionBar.GetLeftButton().GetComponent<Image>().sprite = leftButton;
+    }
+
+    public void SetButtonSelectionBar(Sprite oneButton)
+    {
+        _countButton = CountButtonResult.One;
+        _selectionBar.GetOneButton().GetComponent<Image>().sprite = oneButton;        
     }
 }

@@ -52,5 +52,13 @@ public class Patient : MonoBehaviour
     public PatientAnimations GetPatientAnimations()
     {
         return _patientAnimations;
-    }    
+    }
+
+    public void Revert()
+    {
+        _patientAnimations.Revert();
+        _ui.SetButtonSelectionBar(_patientData.RightButton, _patientData.LeftButton);
+        _ui.ShowVariantPanel(false);
+        _ui.ShowVariantPanel(true);
+    }
 }

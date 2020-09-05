@@ -4,15 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ResultPanel : MonoBehaviour
-{
-    private Animator _animator;
-    private Text _text;
+{    
+    [SerializeField] private Text _text;
+    [SerializeField] private UI _ui;
+    [SerializeField] private Sprite _replay;
+    [SerializeField] private Sprite _further;
 
-    private void Awake()
-    {
-        _animator = GetComponent<Animator>();
-        _text = GetComponent<Text>();
-    }
+    private bool _isResultPanel;
+    public bool IsResultPanel =>  _isResultPanel;
 
     public void SetText(Status status)
     {
@@ -20,22 +19,27 @@ public class ResultPanel : MonoBehaviour
         {
             _text.color = Color.green;
             _text.text = "Good Job";
-            
+            _ui.SetButtonSelectionBar(_further, _replay);
+
         }
         else if (status == Status.Defeat)
         {
             _text.color = Color.red;
-            _text.text = "Defeat";            
+            _text.text = "Defeat";
+            _ui.SetButtonSelectionBar(_replay);
         }
     }
 
-    public void PlayAnimation()
+    public void ShowResult()
     {
-        _animator.SetTrigger("ShowText");
+        _isResultPanel = true;
+        _text.gameObject.SetActive(true); 
+        _ui.ShowVariantPanel(true);
     }
 
-    public void EndAnimation()
+    public void HideResult()
     {
-        gameObject.SetActive(false);
+        _isResultPanel = false;
+        _text.gameObject.SetActive(false);
     }
 }
