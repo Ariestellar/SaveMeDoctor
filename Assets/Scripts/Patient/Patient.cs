@@ -7,18 +7,24 @@ public class Patient : MonoBehaviour
 {
     private PatientMovement _patientMovement;
     private PatientAnimations _patientAnimations;   
+    private UI _ui;   
+    private PatientData _patientData;   
 
     public void Init(UI ui, PatientData patientData)
     {
+        _ui = ui;
+        _patientData = patientData;
         _patientMovement = GetComponent<PatientMovement>();
-        _patientMovement.Init(ui);        
-        GameObject newAnimation = Instantiate(patientData.AnimationGO, this.transform);
+        _patientMovement.Init(_ui);        
+        GameObject newAnimation = Instantiate(_patientData.AnimationGO, this.transform);
         _patientAnimations = newAnimation.GetComponent<PatientAnimations>();
-        _patientAnimations.Init(patientData);
+        _patientAnimations.Init(_patientData, ui);
     }
 
     public void GoToDoctorOffice()
     {
+        _ui.MovementTravelator();
+        _ui.SetButtonSelectionBar(_patientData.RightButton, _patientData.LeftButton);
         _patientMovement.SetShow(true);
     }
 
@@ -29,11 +35,30 @@ public class Patient : MonoBehaviour
 
     public void GoAnimation(ActionsButton button) 
     {
-        _patientAnimations.StartAnimation(button);        
+        //Задать текст результата
+        if (_patientData.RightChoice == button)
+        {
+            _ui.GetResultPanel().SetText(Status.Victory);
+        }
+        else
+        {
+            _ui.GetResultPanel().SetText(Status.Defeat);
+        }
+
+        _patientAnimations.StartAnimation(button);
+        _ui.ShowVariantPanel(false);
     }
 
     public PatientAnimations GetPatientAnimations()
     {
         return _patientAnimations;
+    }
+
+    public void Revert()
+    {
+        _patientAnimations.Revert();
+        _ui.SetButtonSelectionBar(_patientData.RightButton, _patientData.LeftButton);
+        _ui.ShowVariantPanel(false);
+        _ui.ShowVariantPanel(true);
     }
 }
