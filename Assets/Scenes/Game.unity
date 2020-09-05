@@ -600,7 +600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 500b02ef9a7222e4680ce732ff0fff11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _patientPrefab: {fileID: 6312175605861662297, guid: 483d126bbe4290e4daff4419064732a9,
+  _patientPrefab: {fileID: 6312175605861662297, guid: c44507c1075e1e5458f898299fa725f6,
     type: 3}
   _patientDatas:
   - {fileID: 11400000, guid: ce0c06242c45c7f4bb71b34e7e190382, type: 2}
@@ -1934,9 +1934,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 1580434190}
+  _imageText: {fileID: 0}
   _ui: {fileID: 115661045}
   _replay: {fileID: 21300000, guid: d4bfa8e64e208ed428ddea8083ac4043, type: 3}
   _further: {fileID: 21300000, guid: b00d2ea2844a4904890ee7d82cca9a14, type: 3}
+  _lose: {fileID: 0}
+  _win: {fileID: 0}
 --- !u!1 &1580434188
 GameObject:
   m_ObjectHideFlags: 0
