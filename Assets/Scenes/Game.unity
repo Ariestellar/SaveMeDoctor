@@ -605,7 +605,7 @@ MonoBehaviour:
   _patientDatas:
   - {fileID: 11400000, guid: ce0c06242c45c7f4bb71b34e7e190382, type: 2}
   - {fileID: 11400000, guid: bd5fc7345773f97479c5f653c2550657, type: 2}
-  - {fileID: 11400000, guid: ce0c06242c45c7f4bb71b34e7e190382, type: 2}
+  - {fileID: 11400000, guid: 65ece2f3a796b60439ec16aad2ecbca7, type: 2}
 --- !u!1 &474231397
 GameObject:
   m_ObjectHideFlags: 0
@@ -2018,7 +2018,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 40da1b9a2d68a5348b3634de5db1ece3, type: 3}
     m_FontSize: 14
     m_FontStyle: 1
     m_BestFit: 1
