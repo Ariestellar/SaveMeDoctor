@@ -47,3 +47,6 @@ TagManager:
   - name: Patient2
     uniqueID: 1655320989
     locked: 0
+  - name: Patient3
+    uniqueID: 382217553
+    locked: 0
