@@ -27,11 +27,12 @@ public class PatientMovement : MonoBehaviour
 
     //Вызывается в конце анимации "ShowPatient"
     public void IsReadyForTreatment()
-    {
-        _ui.ShowVariantPanel();
+    {        
+        _ui.ShowVariantPanel(true);        
     }
 
     //Вызывается в конце анимации "HidePatient"
+    //Пока убрать (без цикличности)
     public void ReturnToRespawn()
     {
         transform.position = _respawnPosition;
