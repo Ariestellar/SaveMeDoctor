@@ -18,6 +18,7 @@ public class GameSession : MonoBehaviour
         _mainMenu = _ui.GetMainMenu();
         _selectionBar = _ui.GetSelectionBar();
 
+        //Подписываем все кнопки в игре на методы этого класса
         _mainMenu.GetButtonTapToPlay().onClick.AddListener(ButtonPressedTapToPlay);
         _selectionBar.GetRightButton().onClick.AddListener(ButtonPressedRightSelectionBar);
         _selectionBar.GetLeftButton().onClick.AddListener(ButtonPressedLeftSelectionBar);
@@ -26,13 +27,7 @@ public class GameSession : MonoBehaviour
 
     private void Start()
     {
-        _patientPool = _patientCreator.CreatePool(_ui);
-        // TODO : исправить баг, когда по новой пул запускаем то не работает, ошибка заключается в порядке подписи на событие
-        // после исправления баг заключается в том что первый из пула выдвигается до последнего, тут ошибка возможно в нумерации и счете 
-        /*foreach (var patient in _patientPool)
-        {
-            patient.GetPatientAnimations()._finishReception += ChangePacient;
-        }*/
+        _patientPool = _patientCreator.CreatePool(_ui);        
     }
 
     //Висит на кнопке "TapToPlay"  - начало игры из стартового экрана
@@ -46,8 +41,7 @@ public class GameSession : MonoBehaviour
     {
         if (_ui.GetResultPanel().IsResultPanel)
         {
-            ChangePacient();
-            //_ui.GetResultPanel().HideResult();
+            ChangePacient();            
         }
         else
         {
@@ -60,7 +54,6 @@ public class GameSession : MonoBehaviour
         if (_ui.GetResultPanel().IsResultPanel)
         {
             RevertPacient();
-            //_ui.GetResultPanel().HideResult();
         }
         else
         {
@@ -75,8 +68,7 @@ public class GameSession : MonoBehaviour
     
     private void EndPatientReception(int patientNumber)
     {
-        _patientPool[patientNumber].LeaveDoctorOffice();        
-        //_patientPool[patientNumber].GetPatientAnimations()._finishReception -= ChangePacient;        
+        _patientPool[patientNumber].LeaveDoctorOffice();    
     }
 
     private void ChangePacient()
@@ -84,11 +76,11 @@ public class GameSession : MonoBehaviour
         _ui.GetResultPanel().HideResult();
         EndPatientReception(_patientNumber);
         _patientNumber += 1;
-        //Пока убрать (без цикличности) Для цикличности вернуть связи к idle
-        /*if (_patientNumber == _patientPool.Count)
+        //Цикличность, после последнего пациента приедет первый
+        if (_patientNumber == _patientPool.Count)
         {
             _patientNumber = 0;
-        }*/
+        }
         if (_patientNumber < _patientPool.Count)
         {
             StartPatientReception(_patientNumber);

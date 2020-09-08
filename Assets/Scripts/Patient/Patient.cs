@@ -28,9 +28,17 @@ public class Patient : MonoBehaviour
         _patientMovement.SetShow(true);
     }
 
+    //Команда для выезда из кабинета доктора
     public void LeaveDoctorOffice()
     {
         _patientMovement.SetShow(false);
+    }
+
+    //Команда после того как выезд закончился, служит для восстановления пациента, для переиспользования
+    //Вызывается в конце анимации "HidePacient"
+    public void EndLeaveDoctorOffice()
+    {
+        _patientAnimations.Revert();
     }
 
     public void GoAnimation(ActionsButton button) 

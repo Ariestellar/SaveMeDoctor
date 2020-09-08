@@ -11,6 +11,28 @@ public class UI : MonoBehaviour
     [SerializeField] private ResultPanel _resultPanel;
 
     private CountButtonResult _countButton;
+    private CanvasScaler _canvasScaler;
+
+    private void Awake()
+    {
+        _canvasScaler = GetComponent<CanvasScaler>();
+    }
+
+    private void Start()
+    {
+        if (Screen.width <= 480)
+        {
+            _canvasScaler.scaleFactor = 0.4f;
+        }
+        else if (Screen.width <= 750)
+        {
+            _canvasScaler.scaleFactor = 0.65f;
+        }
+        else if (Screen.width <= 1080)
+        {
+            _canvasScaler.scaleFactor = 1;
+        }
+    }
 
     public void MovementTravelator()
     {
