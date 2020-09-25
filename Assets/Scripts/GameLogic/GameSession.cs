@@ -1,4 +1,4 @@
-﻿using GameAnalyticsSDK;
+﻿//using GameAnalyticsSDK;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,7 +28,7 @@ public class GameSession : MonoBehaviour
 
     private void Start()
     {
-        GameAnalytics.Initialize();
+        //GameAnalytics.Initialize();
         _patientPool = _patientCreator.CreatePool(_ui);
     }
 
