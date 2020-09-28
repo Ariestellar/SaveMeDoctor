@@ -56,8 +56,8 @@ extern "C" {
         [[AppsFlyerLib shared] setAppInviteOneLink:stringFromChar(appInviteOneLinkID)];
     }
 
-    const void _anonymizeUser (bool deviceLoggingDisabled) {
-        [AppsFlyerLib shared].deviceLoggingDisabled = deviceLoggingDisabled;
+    const void _anonymizeUser (bool anonymizeUser) {
+        [AppsFlyerLib shared].anonymizeUser = anonymizeUser;
     }
 
     const void _setDisableCollectIAd (bool disableCollectASA) {
@@ -89,7 +89,7 @@ extern "C" {
     }
 
     const void _recordLocation (double longitude, double latitude) {
-        [[AppsFlyerLib shared] logLocationEvent:longitude latitude:latitude];
+        [[AppsFlyerLib shared] logLocation:longitude latitude:latitude];
     }
 
     const char* _getAppsFlyerId () {
@@ -128,28 +128,32 @@ extern "C" {
     }
 
     const void _handleOpenUrl(const char *url, const char *sourceApplication, const char *annotation) {
-        [[AppsFlyerLib shared] handleOpenURL:[NSURL URLWithString:stringFromChar(url)] sourceApplication:stringFromChar(sourceApplication) withAnnotation:stringFromChar(annotation)];
-    }
+        [[AppsFlyerLib shared] handleOpenURL:[NSURL URLWithString:stringFromChar(url)] sourceApplication:stringFromChar(sourceApplication) withAnnotation:stringFromChar(annotation)];    }
 
     const void _recordCrossPromoteImpression (const char* appID, const char* campaign, const char* parameters) {
-        [AppsFlyerCrossPromotionHelper logCrossPromoteImpression:stringFromChar(appID) campaign:stringFromChar(campaign) parameters:dictionaryFromJson(parameters)];
-    }
+        [AppsFlyerCrossPromotionHelper logCrossPromoteImpression:stringFromChar(appID) campaign:stringFromChar(campaign) parameters:dictionaryFromJson(parameters)];    }
     
     const void _attributeAndOpenStore (const char* appID, const char* campaign, const char* parameters, const char* objectName) {
+
+        openStoreObjectName = stringFromChar(objectName);
+
         [AppsFlyerCrossPromotionHelper
          logAndOpenStore:stringFromChar(appID)
          campaign:stringFromChar(campaign)
          parameters:dictionaryFromJson(parameters)
-         openStore:^(NSURLSession * _Nonnull urlSession, NSURL * _Nonnull clickURL){
-                   unityCallBack(stringFromChar(objectName), OPEN_STORE_LINK_CALLBACK, [clickURL.absoluteString UTF8String]);
+         openStore:^(NSURLSession * _Nonnull urlSession, NSURL * _Nonnull clickURL) {
+            unityCallBack(openStoreObjectName, OPEN_STORE_LINK_CALLBACK, [clickURL.absoluteString UTF8String]);
         }];
     }
     
     const void _generateUserInviteLink (const char* parameters, const char* objectName) {
+
+        generateInviteObjectName = stringFromChar(objectName);
+
         [AppsFlyerShareInviteHelper generateInviteUrlWithLinkGenerator:^AppsFlyerLinkGenerator * _Nonnull(AppsFlyerLinkGenerator * _Nonnull generator) {
             return generatorFromDictionary(dictionaryFromJson(parameters), generator);
         } completionHandler:^(NSURL * _Nullable url) {
-            unityCallBack(stringFromChar(objectName), GENERATE_LINK_CALLBACK, [url.absoluteString UTF8String]);
+            unityCallBack(generateInviteObjectName, GENERATE_LINK_CALLBACK, [url.absoluteString UTF8String]);
         }];
     }
     
@@ -202,8 +206,8 @@ extern "C" {
         [[AppsFlyerLib shared] setDelegate:_AppsFlyerdelegate];
     }
 
-    const void _waitForAdvertisingIdentifierWithTimeoutInterval (int timeoutInterval) {
-         [[AppsFlyerLib shared] waitForAdvertisingIdentifierWithTimeoutInterval:timeoutInterval];
+    const void _waitForATTUserAuthorizationWithTimeoutInterval (int timeoutInterval) {
+        [[AppsFlyerLib shared] waitForATTUserAuthorizationWithTimeoutInterval:timeoutInterval];
     }
 
     const void _disableSKAdNetwork (bool isDisabled) {
